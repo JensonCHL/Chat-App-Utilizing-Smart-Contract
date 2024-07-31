@@ -105,5 +105,6 @@ const Navbar = () => {
     </div>
   )
 }
+// {error == ""?"" : <Error error={error}/>}
 
 export default Navbar

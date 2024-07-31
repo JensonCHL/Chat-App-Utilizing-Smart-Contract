@@ -1,5 +1,5 @@
 // const { ethers } = require("hardhat");
-import { ethers } from 'ethers';
+import { ethers,providers } from 'ethers';
 
 import Web3Modal from 'web3modal';
 
@@ -17,7 +17,7 @@ export const CheckIfWalletConnected = async () => {
         console.log("Install MetaMask");
     }
 };
-export const connectWallet = async()=>{
+export const connectWallet = async () => {
     try {
         if (!window.ethereum) return console.log("Install MetaMask");
         const accounts = await window.ethereum.request({
@@ -30,35 +30,37 @@ export const connectWallet = async()=>{
     }
 };
 
-const fetchContract = (signerOrProvider)=> 
-    new ethers.Contract(ChatAppAddress,ChatAppABI,signerOrProvider);
+const fetchContract = (signerOrProvider) =>
+    new ethers.Contract(ChatAppAddress, ChatAppABI, signerOrProvider);
 
-export const connectingWithContract = async()=>{
+export const connectingWithContract = async () => {
     try {
-        const web3modal = new Web3Modal();
-        const connection = await web3modal.connect();
-        const provider = new ethers.providers.Web3Provider(connection)
-        const signer = provider.getsigner();
-        const contract = fetchContract(signer);
 
+        // const web3modal = new Web3Modal();
+        // const connection = await web3modal.connect();
+        const provider = new ethers.BrowserProvider(window.ethereum)
+        const signer = await provider.getSigner();
+        // console.log(signer)
+        const contract = fetchContract(signer);
+        
         return contract;
     } catch (error) {
         console.log("Install MetaMask");
     }
 };
 
-export const convertTime = (time)=>{
+export const convertTime = (time) => {
 
     const newTime = new Date(time.toNumber());
 
     const realTime = newTime.getHours() +
-     "/" + newTime.getMinutes() +
-    "/" + newTime.getSeconds() +
-    " Date:"+ newTime.getDate() +
-    "/" + newTime.getMonth() +
-    (newTime.getMonth()+1)+
-    "/" +
-    newTime.getFullYear();
+        "/" + newTime.getMinutes() +
+        "/" + newTime.getSeconds() +
+        " Date:" + newTime.getDate() +
+        "/" + newTime.getMonth() +
+        (newTime.getMonth() + 1) +
+        "/" +
+        newTime.getFullYear();
 
     return realTime;
 }

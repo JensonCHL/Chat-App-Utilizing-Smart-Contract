@@ -9,6 +9,7 @@ import {
 }
     from '../Utils/apiFeature';
 
+import { ChatAppAddress, ChatAppABI } from '../Context/constants'
 
 export const ChatAppContext = React.createContext();
 export const ChatAppProvider = ({ children }) => {
@@ -32,21 +33,31 @@ export const ChatAppProvider = ({ children }) => {
             // Code dalem sini manggil function yang ada di API
             // Get contract
             const contract = await connectingWithContract();
+            console.log(contract)
             //  Get account
             const connectAccount = await connectWallet();
             setAccount(connectAccount);
+            console.log("Connected Account: " + connectAccount)
             // Get User Name
-            // const userName = await contract.getUsername(connectAccount);
-            // setUserName(userName);
+
+            const userName = await contract.getUsername(connectAccount);
+            setUserName(userName);
+            console.log(userName)
+            // console.log("User Name:", userName);
             // Get my friendlist
             const friendLists = await contract.getMyFriendList();
             setFriendLists(friendLists);
+            // console.log(friendLists)
             // Get all app user list
             const userList = await contract.getAllAppUser();
             setUserLists(userList);
 
+            // const debug = await contract.userList(connectAccount)
+            // console.log(debug)
+
+            console.log("User List: " + userList)
         } catch (error) {
-            setError("Please install and connect your wallet");
+            setError("Error in fetch data ChatAppContext.js");
             console.log(error)
         }
 
@@ -68,10 +79,11 @@ export const ChatAppProvider = ({ children }) => {
     // Create account
     const createAccount = async ({ name, accountAddress }) => {
         try {
-            if (name || accountAddress)
-                return setError("Please provide name and account");
-
+            // if (name || accountAddress)
+            //     return setError("Please provide name and account");
+            // console.log(name)
             const contract = await connectingWithContract();
+            console.log(contract)
             const getCreatedUser = await contract.createAccount(name);
             setLoading(true);
             await getCreatedUser.wait();
@@ -101,8 +113,8 @@ export const ChatAppProvider = ({ children }) => {
     // send message
     const sendMessage = async ({ msg, accountAddress }) => {
         try {
-            if (msg || accountAddress)
-                return setError("Please provide parameter");
+            // if (msg || accountAddress)
+            //     return setError("Please provide parameter");
 
             const contract = await connectingWithContract();
             const sendMsg = await contract.sendMessage(accountAddress, msg);
