@@ -20,6 +20,7 @@ export const ChatAppProvider = ({ children }) => {
     const [loading, setLoading] = useState(false);
     const [userLists, setUserLists] = useState([]);
     const [error, setError] = useState("");
+    const [accountCreated, setaccountCreated] = useState(false);
 
     // Chat user Data
     const [currentUserName, setcurrentUserName] = useState("");
@@ -39,7 +40,6 @@ export const ChatAppProvider = ({ children }) => {
             setAccount(connectAccount);
             console.log("Connected Account: " + connectAccount)
             // Get User Name
-
             const userName = await contract.getUsername(connectAccount);
             setUserName(userName);
             console.log(userName)
@@ -55,7 +55,9 @@ export const ChatAppProvider = ({ children }) => {
             // const debug = await contract.userList(connectAccount)
             // console.log(debug)
 
-            console.log("User List: " + userList)
+            // for (let i = 0; i < userList.length; i++) {
+            //     console.log("User List: " + userList[i]);
+            // }
         } catch (error) {
             setError("Error in fetch data ChatAppContext.js");
             console.log(error)
@@ -65,9 +67,9 @@ export const ChatAppProvider = ({ children }) => {
     useEffect(() => {
         fetchData();
     }, [])
-
     // Read Message
     const readMessage = async (friendAddress) => {
+        console.log(friendAddress)
         try {
             const contract = await connectingWithContract();
             const read = await contract.readMessage(friendAddress);
@@ -96,8 +98,8 @@ export const ChatAppProvider = ({ children }) => {
     // Add your firnds
     const addFriends = async ({ name, accountAddress }) => {
         try {
-            if (name || accountAddress)
-                return setError("Please provide name and account");
+            // if (name || accountAddress)
+            //     return setError("Please provide name and account");
 
             const contract = await connectingWithContract();
             const addMyFriends = await contract.addFriend(accountAddress, name);
@@ -113,23 +115,24 @@ export const ChatAppProvider = ({ children }) => {
     // send message
     const sendMessage = async ({ msg, accountAddress }) => {
         try {
-            // if (msg || accountAddress)
-            //     return setError("Please provide parameter");
 
+            console.log(msg)
+            console.log(accountAddress)
             const contract = await connectingWithContract();
             const sendMsg = await contract.sendMessage(accountAddress, msg);
+            console.log(send)
             setLoading(true);
             await sendMsg.wait();
             setLoading(false);
-            router.push('/');
             window.location.reload();
         } catch (error) {
-            setError("Something error ");
+            setError("Something error in send message ");
         }
     };
 
     // Read info
-    const readUser = async ({ userAddress }) => {
+    const readUser = async (userAddress) => {
+        console.log("cal: " + userAddress)
         const contract = await connectingWithContract();
         const userName = await contract.getUsername(userAddress);
         setcurrentUserName(userName);
@@ -153,7 +156,9 @@ export const ChatAppProvider = ({ children }) => {
                 friendMsg,
                 loading,
                 userLists,
-                error
+                error,
+                currentUserName,
+                currentUserAddress,
             }}>
             {children}
         </ChatAppContext.Provider>

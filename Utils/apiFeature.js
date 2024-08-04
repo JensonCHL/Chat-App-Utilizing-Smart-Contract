@@ -36,9 +36,9 @@ const fetchContract = (signerOrProvider) =>
 export const connectingWithContract = async () => {
     try {
 
-        // const web3modal = new Web3Modal();
-        // const connection = await web3modal.connect();
-        const provider = new ethers.BrowserProvider(window.ethereum)
+        const web3modal = new Web3Modal();
+        const connection = await web3modal.connect();
+        const provider = new ethers.BrowserProvider(connection)
         const signer = await provider.getSigner();
         // console.log(signer)
         const contract = fetchContract(signer);
@@ -50,7 +50,7 @@ export const connectingWithContract = async () => {
 };
 
 export const convertTime = (time) => {
-
+    console.log(time)
     const newTime = new Date(time.toNumber());
 
     const realTime = newTime.getHours() +

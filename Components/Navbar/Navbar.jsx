@@ -12,7 +12,7 @@ const style2 = "flex items-center border-b-2 border-[#F18303] pb-3 text-[#F18303
 
 const Navbar = () => {
   const menuItems = [
-    { menu: "All users", link: "/" },
+    { menu: "All users", link: "alluser" },
     {
       menu: "CHAT",
       link: "/",
