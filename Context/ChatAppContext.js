@@ -39,11 +39,12 @@ export const ChatAppProvider = ({ children }) => {
             const connectAccount = await connectWallet();
             setAccount(connectAccount);
             console.log("Connected Account: " + connectAccount)
+
             // Get User Name
+
             const userName = await contract.getUsername(connectAccount);
             setUserName(userName);
             console.log(userName)
-            // console.log("User Name:", userName);
             // Get my friendlist
             const friendLists = await contract.getMyFriendList();
             setFriendLists(friendLists);
@@ -51,6 +52,8 @@ export const ChatAppProvider = ({ children }) => {
             // Get all app user list
             const userList = await contract.getAllAppUser();
             setUserLists(userList);
+            
+
 
             // const debug = await contract.userList(connectAccount)
             // console.log(debug)
@@ -74,16 +77,19 @@ export const ChatAppProvider = ({ children }) => {
             const contract = await connectingWithContract();
             const read = await contract.readMessage(friendAddress);
             setFriendMsg(read);
+            setUserName()
         } catch (error) {
             setError("Currently you have no Message");
         }
     };
     // Create account
     const createAccount = async ({ name, accountAddress }) => {
+        console.log("tes");
         try {
             // if (name || accountAddress)
             //     return setError("Please provide name and account");
             // console.log(name)
+
             const contract = await connectingWithContract();
             console.log(contract)
             const getCreatedUser = await contract.createAccount(name);
@@ -120,7 +126,7 @@ export const ChatAppProvider = ({ children }) => {
             console.log(accountAddress)
             const contract = await connectingWithContract();
             const sendMsg = await contract.sendMessage(accountAddress, msg);
-            console.log(send)
+            console.log("Sended")
             setLoading(true);
             await sendMsg.wait();
             setLoading(false);

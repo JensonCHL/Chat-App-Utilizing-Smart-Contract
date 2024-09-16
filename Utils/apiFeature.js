@@ -1,5 +1,5 @@
 // const { ethers } = require("hardhat");
-import { ethers,providers } from 'ethers';
+import { ethers, providers } from 'ethers';
 
 import Web3Modal from 'web3modal';
 
@@ -24,6 +24,7 @@ export const connectWallet = async () => {
             method: "eth_requestAccounts",
         });
         const firstAccount = accounts[0];
+        console.log("Connected")
         return firstAccount;
     } catch (error) {
         console.log("Install MetaMask");
@@ -42,7 +43,7 @@ export const connectingWithContract = async () => {
         const signer = await provider.getSigner();
         // console.log(signer)
         const contract = fetchContract(signer);
-        
+
         return contract;
     } catch (error) {
         console.log("Install MetaMask");
@@ -50,17 +51,20 @@ export const connectingWithContract = async () => {
 };
 
 export const convertTime = (time) => {
-    console.log(time)
-    const newTime = new Date(time.toNumber());
+    const timestamp = Number(time);
+    const date = new Date(timestamp * 1000);
+    const realTime = date.toLocaleString();
+    // const newTime = new Date(time.toNumber());
 
-    const realTime = newTime.getHours() +
-        "/" + newTime.getMinutes() +
-        "/" + newTime.getSeconds() +
-        " Date:" + newTime.getDate() +
-        "/" + newTime.getMonth() +
-        (newTime.getMonth() + 1) +
-        "/" +
-        newTime.getFullYear();
+
+    // const realTime = newTime.getHours() +
+    //     "/" + newTime.getMinutes() +
+    //     "/" + newTime.getSeconds() +
+    //     " Date:" + newTime.getDate() +
+    //     "/" + newTime.getMonth() +
+    //     (newTime.getMonth() + 1) +
+    //     "/" +
+    //     newTime.getFullYear();
 
     return realTime;
 }
