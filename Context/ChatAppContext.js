@@ -62,7 +62,7 @@ export const ChatAppProvider = ({ children }) => {
             //     console.log("User List: " + userList[i]);
             // }
         } catch (error) {
-            setError("Error in fetch data ChatAppContext.js");
+            setError("Please Create Account");
             console.log(error)
         }
 

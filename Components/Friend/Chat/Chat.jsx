@@ -40,9 +40,9 @@ const Chat = ({ sendMessage, readMessage, friendMsg, account, userName, loading,
                         {
                             friendMsg.map((el, i) => (
                                 <div
-                                    className='flex flex-col gap-2 ml-10'
+                                    className='mt-3 flex flex-col gap-5 ml-10'
                                 >{el.sender === chatData.address ? (
-                                    <div className='flex flex-row items-center gap-2'  >
+                                    <div className='flex flex-row items-center gap-4'  >
                                         <Image src={images.accountName}
                                             width={50}
                                             height={50}
@@ -53,13 +53,13 @@ const Chat = ({ sendMessage, readMessage, friendMsg, account, userName, loading,
                                         </span>
                                     </div>
                                 ) : (
-                                    <div className='flex flex-row items-center gap-2'>
+                                    <div className='flex flex-row items-center gap-4'>
                                         <Image src={images.accountName}
                                             width={50}
                                             height={50}
                                         />
                                         <span>
-                                            
+
                                             {el.sender.slice(0, 6)}...{el.sender.slice(-4)} {""}
                                             <small>Time: {convertTime(el.timestamp)}</small>
                                         </span>

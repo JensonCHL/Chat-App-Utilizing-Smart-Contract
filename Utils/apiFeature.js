@@ -54,17 +54,6 @@ export const convertTime = (time) => {
     const timestamp = Number(time);
     const date = new Date(timestamp * 1000);
     const realTime = date.toLocaleString();
-    // const newTime = new Date(time.toNumber());
-
-
-    // const realTime = newTime.getHours() +
-    //     "/" + newTime.getMinutes() +
-    //     "/" + newTime.getSeconds() +
-    //     " Date:" + newTime.getDate() +
-    //     "/" + newTime.getMonth() +
-    //     (newTime.getMonth() + 1) +
-    //     "/" +
-    //     newTime.getFullYear();
 
     return realTime;
 }
