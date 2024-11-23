@@ -17,22 +17,22 @@ const Navbar = () => {
       menu: "CHAT",
       link: "/",
     },
-    {
-      menu: "CONTACT",
-      link: "/",
-    },
-    {
-      menu: "SETTINGS",
-      link: "/",
-    },
-    {
-      menu: "FAQS",
-      link: "/",
-    },
-    {
-      menu: "TERMS OF USE",
-      link: "/",
-    }
+    // {
+    //   menu: "CONTACT",
+    //   link: "/",
+    // },
+    // {
+    //   menu: "SETTINGS",
+    //   link: "/",
+    // },
+    // {
+    //   menu: "FAQS",
+    //   link: "/",
+    // },
+    // {
+    //   menu: "TERMS OF USE",
+    //   link: "/",
+    // }
 
   ];
   // USER STATE
