@@ -12,6 +12,7 @@ import search from "./search.png"
 import smile from "./smile.png"
 import file from "./file.png"
 import BBCC from "./BBCC Logo.png"
+import BBCCReg from "./BBCC Register.png"
 import { FaRegCheckCircle,MdCancel } from "react-icons/fa";
 
 export default{
@@ -30,5 +31,6 @@ export default{
     search,
     smile,
     file,
-    BBCC
+    BBCC,
+    BBCCReg,
 };

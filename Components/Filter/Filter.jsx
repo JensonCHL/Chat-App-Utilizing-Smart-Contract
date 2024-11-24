@@ -40,10 +40,10 @@ const Filter = () => {
             className=''
             openBox={setAddFriend}
             title="Welcome to"
-            head="CHAT BUDDY"
+            head="BBCC Chat"
             info="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut expedita voluptatum tempora magni et recusandae quam, dolores voluptate nobis labore? Porro nihil hic adipisci ut culpa rem aspernatur ipsam ipsum?"
             smallInfo="Select Your friend name & address"
-            image={images.hero}
+            image={images.BBCCReg}
             functionName={addFriends}
           />
         </div>

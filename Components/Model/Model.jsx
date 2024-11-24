@@ -17,11 +17,11 @@ const Model = ({ openBox, title, address, head, info, smallInfo, image, function
     <div className='w-full m-1 items-center'>
       <div className='grid grid-cols-[1.4fr_1fr] items-center w-[95%]' >
         <div className='w-[85%]'>
-          <Image src={image} alt='buddy' width={700} height={700}></Image>
+          <Image src={images.BBCCReg} alt='buddy' width={600} height={600}></Image>
         </div>
         <div className='flex flex-col text-lg text-[#F18303] gap-y-4'>
           <h1 className='flex flex-col text-[4rem] gap-10' >
-            {title} <span className='text-[5rem] mt-1' >{head}</span>
+            {title} <span className='text-[5rem] mt-1' >BBCC Chat</span>
           </h1>
           <p className='text-white mt-7' >{info}</p>
           <small className='text-lg' >{smallInfo}</small>
