@@ -17,6 +17,7 @@ const UserCard = ({ el, i, addFriends }) => {
         <div className='flex flex-col overflow-hidden gap-3 text-center items-center'>
           <h3 className='text-lg font-semibold truncate'>{el.name}</h3>
           <p className='text-sm text-gray-100 truncate'>{el.accountAddress.slice(0,25)}</p>
+          
           <button className='text-[#F18303] bg-[rgba(0,0,0,0.25)] rounded-[1rem] w-auto p-3 px-8 border-none  ' onClick={() => addFriends({ name: el.name, accountAddress: el.accountAddress })} >Add Friend</button>
         </div>
       </div>

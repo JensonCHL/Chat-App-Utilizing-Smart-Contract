@@ -45,7 +45,7 @@ const Navbar = () => {
     <div className='flex flex-col px-4 mt-4 bg-[#292F3f]'>
       <div className='flex flex-row justify-between items-center'>
         <div className='' >
-          <Image src={images.logo} alt='logo' className='w-20 h-auto' ></Image>
+          <Image src={images.BBCC} alt='logo' className='w-40 h-auto' ></Image>
         </div>
         <div className='flex flex-row items-center justify-between gap-5'>
           {menuItems.map((el, i) => (
@@ -77,14 +77,7 @@ const Navbar = () => {
             </button>
           )}
         </div>
-        <div
-          className=''
-          onClick={() => setOpen(true)}
-        >
-          <Image className='size-10' src={images.open} alt='open'
-            width={30} height={39}
-          />
-        </div>
+        
       </div>
       {/* Model Component */}
       {openModel && (
